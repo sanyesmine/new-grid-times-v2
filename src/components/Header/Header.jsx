@@ -22,9 +22,10 @@ const Header = () => {
             </button>
           </ActionGroup>
           <ActionGroup>
-            <button>
+            <UserButton>
               <User size={24} />
-            </button>
+            </UserButton>
+            <Subscribe>Subscribe</Subscribe>
           </ActionGroup>
         </Row>
       </SuperHeader>
@@ -39,6 +40,15 @@ const SuperHeader = styled.div`
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  @media (min-width: 834px) {
+    margin-left: 50px;
+    margin-right: 50px;
+
+    margin-top: 30px;
+    background: var(--color-gray-100);
+    color: black;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
@@ -50,12 +60,8 @@ const ActionGroup = styled.div`
   display: flex;
   gap: 24px;
 
-  /*
-    FIX: Remove the inline spacing that comes with
-    react-feather icons.
-  */
   svg {
-    display: block;
+    display: block; /* fix react-feather inline spacing */
   }
 `;
 
@@ -65,6 +71,28 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media (min-width: 834px) {
+    margin-top: -80px;
+  }
+`;
+
+/* 👇 User button: visible on mobile, hidden on desktop */
+const UserButton = styled.button`
+  display: block;
+
+  @media (min-width: 834px) {
+    display: none;
+  }
+`;
+
+/* 👇 Subscribe: hidden on mobile, visible on desktop */
+const Subscribe = styled(Button)`
+  display: none;
+
+  @media (min-width: 834px) {
+    display: flex;
+  }
 `;
 
 export default Header;
